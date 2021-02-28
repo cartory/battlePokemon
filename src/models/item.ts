@@ -4,6 +4,11 @@ import sequelize from '../sequelize'
 
 class Item extends Model { }
 
+const boost = [
+    'atk', 'def',
+    'spa', 'spd', 'spe'
+]
+
 Item.init({
     id: {
         type: DataTypes.BIGINT,
@@ -12,7 +17,8 @@ Item.init({
         autoIncrementIdentity: true,
     },
     name: DataTypes.STRING,
-    type: DataTypes.FLOAT,
+    boost: DataTypes.FLOAT,
+    type: DataTypes.ENUM({ values: boost }),
 }, { sequelize })
 
 export default Item

@@ -5,10 +5,10 @@ import sequelize from '../sequelize'
 class Move extends Model { }
 
 const types = [
-    'POISON', 'ATTACK',
-    'BURN', 'PARALIZED',
-    'SLEEP', 'CONFUSED',
-    'FRZED',
+    'POISON', 'ATK', 'SPA',
+    'BURN', 'PARALIZE',
+    'SLEEP', 'CONFUSE',
+    'FREEZED',
 ]
 
 
@@ -28,8 +28,8 @@ Move.init({
         allowNull: true,
         defaultValue: null,
     },
-    percent: DataTypes.FLOAT,
-
+    prob: DataTypes.FLOAT,
+    recoil: DataTypes.FLOAT,
 }, { sequelize })
 
 export default Move

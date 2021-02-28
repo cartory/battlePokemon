@@ -11,8 +11,10 @@ Pokemon.init({
         autoIncrement: true,
         autoIncrementIdentity: true,
     },
+    ability: DataTypes.STRING,
     name: DataTypes.STRING,
-    sprite: DataTypes.STRING,
+    spriteFront: DataTypes.STRING,
+    spriteBack: DataTypes.STRING,
     // STATS
     hp: DataTypes.INTEGER,
     attack: DataTypes.INTEGER,

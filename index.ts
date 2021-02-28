@@ -7,10 +7,7 @@ import sequelize from './src/sequelize'
 
 sequelize
     .authenticate()
-    .then(async () => {
-        await sequelize.sync({ force: true })
-        console.log(`\x1b[32mDB Connected Successfully!!\x1b[0m`)
-    })
+    .then(() => console.log(`\x1b[32mDB Connected Successfully!!\x1b[0m`))
     .catch(error => console.error(error))
 
 express()
@@ -24,6 +21,6 @@ express()
     .get("/", (_, res) => {
         res.send('<h1>Welcome to besafe API</h1>')
     })
-    .listen(8000, () => {
-        console.log(`Server running on \x1b[33mhttp://${'localhost'}:${'8000'}\x1b[0m`);
+    .listen(process.env.PORT, () => {
+        console.log(`Server running on \x1b[33mhttp://${process.env.HOST}:${process.env.PORT}\x1b[0m`);
     })

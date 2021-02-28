@@ -26,7 +26,8 @@ Type.init({
     },
     name: DataTypes.ENUM({
         values: types
-    })
+    }),
+    color: DataTypes.STRING
 }, { sequelize })
 
 Effectiveness.init({
