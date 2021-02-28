@@ -1,0 +1,6 @@
+# FILES
+.env
+# DIRS
+/dist
+/node_modules
+/src/database
