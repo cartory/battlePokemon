@@ -9,7 +9,13 @@ const router = Router();
 router
     .get('/pokemons', async (_, res) => {
         try {
-            res.json(await Pokemon.findAll())
+            res.json(await Pokemon.findAll({
+                include: [
+                    { model: Type },
+                    { model: Item },
+                    { model: Move },
+                ]
+            }))
         } catch (error) {
             res.json(error)
         }
