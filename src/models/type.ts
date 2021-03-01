@@ -30,7 +30,7 @@ Type.init({
     color: DataTypes.STRING
 }, { sequelize })
 
-Effectiveness.init({
+Effectiveness.init({ 
     value: DataTypes.FLOAT,
 }, { sequelize })
 

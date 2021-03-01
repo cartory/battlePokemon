@@ -3,4 +3,4 @@
 # DIRS
 /dist
 /node_modules
-/src/database
+# /src/database

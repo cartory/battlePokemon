@@ -1,14 +1,14 @@
 import Item from './item'
 import Move from './move'
-import Pokemon from './pokemon'
+import { Pokemon, PokemonType } from './pokemon'
 import { Type, Effectiveness, types } from './type'
 
 // ITEM 1...* POKEMON
 Item.hasMany(Pokemon)
 Pokemon.belongsTo(Item)
 // POKEMON *...* TYPE
-Pokemon.belongsToMany(Type, { through: 'Pokemon_Type' })
-Type.belongsToMany(Pokemon, { through: 'Pokemon_Type' })
+Pokemon.belongsToMany(Type, { through: PokemonType })
+Type.belongsToMany(Pokemon, { through: PokemonType })
 // POKEMON 1...* MOVE
 Pokemon.hasMany(Move)
 Move.belongsTo(Pokemon)
@@ -16,11 +16,10 @@ Move.belongsTo(Pokemon)
 Type.hasMany(Move)
 Move.belongsTo(Type)
 // EFFECTIVENESS => TYPE *...* TYPE
-Type.belongsToMany(Type, { through: Effectiveness, as: 'weakness', foreignKey: 'weaknessID'})
-Type.belongsToMany(Type, { through: Effectiveness, as: 'effective', foreignKey: 'effectiveID'})
+Type.belongsToMany(Type, { through: Effectiveness, as: 'Target' })
 
 export {
     types,
-    Item, Type,
+    Item, Type, PokemonType,
     Move, Pokemon, Effectiveness,
 }

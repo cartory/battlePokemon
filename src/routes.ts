@@ -2,7 +2,7 @@ import { Router } from 'express'
 
 import {
     Item, Move,
-    Type, Pokemon,
+    Type, Pokemon, Effectiveness
 } from './models/models'
 const router = Router();
 
@@ -13,7 +13,7 @@ router
                 include: [
                     { model: Type },
                     { model: Item },
-                    { model: Move },
+                    { model: Move, include: [{ model: Type }] },
                 ]
             }))
         } catch (error) {
@@ -22,14 +22,30 @@ router
     })
     .get('/types', async (_, res) => {
         try {
-            res.json(await Type.findAll())
+            res.json(await Type.findAll({
+                include: [
+                    { model: Type, as: 'Target' }
+                ]
+            }))
+        } catch (error) {
+            console.log(error);
+            res.json(error)
+        }
+    })
+    .get('/effectiveness', async (_, res) => {
+        try {
+            res.json(await Effectiveness.findAll())
         } catch (error) {
             res.json(error)
         }
     })
-    .get('/moves', async(_, res) => {
+    .get('/moves', async (_, res) => {
         try {
-            res.json(await Move.findAll())
+            res.json(await Move.findAll({
+                include: [
+                    { model: Type }
+                ]
+            }))
         } catch (error) {
             res.json(error)
         }

@@ -2,7 +2,8 @@ import { Model, DataTypes } from 'sequelize'
 
 import sequelize from '../sequelize'
 
-class Pokemon extends Model {  }
+class Pokemon extends Model { }
+class PokemonType extends Model { }
 
 Pokemon.init({
     id: {
@@ -24,4 +25,8 @@ Pokemon.init({
     speed: DataTypes.INTEGER,
 }, { sequelize })
 
-export default Pokemon
+PokemonType.init({}, { sequelize })
+
+export {
+    Pokemon, PokemonType
+}
